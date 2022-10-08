@@ -6,14 +6,17 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import ProTip from './ProTip';
 
-import ProductNamer from './components/serviceCards/ProductNamer';
+import Welcome from './components/text/Welcome';
+
+import ProductNamerCard from './components/serviceCards/ProductNamerCard';
+import ProductNamer from './components/services/ProductNamer';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Morris
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -22,19 +25,20 @@ function Copyright() {
 }
 
 export default function App() {
+  const [state, setState] = React.useState('start')
+
   return (
     <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h2" component="h1" gutterBottom>
-          Welcome to Morris.
-        </Typography>
-        <Typography variant="h4" component="h2">
-          Create with just a few words.
-        </Typography>
-      </Box>
+      <Welcome />
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <ProductNamer />
+          {state == 'start' && (
+            <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
+          )}
+
+          {state == 'enter-product-name' &&
+            <ProductNamer />
+          }
         </Grid>
       </Grid>
       <Box sx={{ my: 4 }}>

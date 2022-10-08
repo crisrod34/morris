@@ -7,10 +7,10 @@ import { CardActionArea } from '@mui/material';
 
 import randomStickers from '../../media/randomStickers.jpg';
 
-export default function ProductNamer() {
+export default function ProductNamerCard(props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea href="/productNamer">
+      <CardActionArea onClick={props.enterProductName}>
         <CardMedia
           component="img"
           height="140"

@@ -9,7 +9,7 @@ import ProTip from './ProTip';
 import Welcome from './components/text/Welcome';
 
 import ProductNamerCard from './components/serviceCards/ProductNamerCard';
-import ProductNamer from './components/services/ProductNamer';
+import ProductNamerService from './components/services/ProductNamerService';
 
 function Copyright() {
   return (
@@ -31,20 +31,16 @@ export default function App() {
     <Container maxWidth="sm">
       <Welcome />
       <Grid container spacing={2}>
-        <Grid item xs={6}>
-          {state == 'start' && (
-            <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
-          )}
+        {state == 'start' && (
+          <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
+        )}
 
-          {state == 'enter-product-name' &&
-            <ProductNamer />
-          }
-        </Grid>
+        {state == 'enter-product-name' &&
+          <ProductNamerService />
+        }
       </Grid>
-      <Box sx={{ my: 4 }}>
-        <ProTip />
-        <Copyright />
-      </Box>
+      <ProTip />
+      <Copyright />
     </Container>
   );
 }

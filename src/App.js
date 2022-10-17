@@ -2,11 +2,12 @@ import * as React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { Button } from '@mui/material';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import ProTip from './ProTip';
 
-import Welcome from './components/text/Welcome';
+import Header from './components/text/Header';
 
 import ProductNamerCard from './components/serviceCards/ProductNamerCard';
 import ProductNamerService from './components/services/ProductNamerService';
@@ -29,16 +30,29 @@ export default function App() {
 
   return (
     <Container maxWidth="sm">
-      <Welcome />
-      <Grid container spacing={2}>
-        {state == 'start' && (
-          <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
-        )}
+      <Header />
 
-        {state == 'enter-product-name' &&
-          <ProductNamerService />
-        }
+      {state == 'start' && (
+        <Grid container spacing={2}>
+          <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
+          <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
+        </Grid>
+      )}
+
+      {state == 'enter-product-name' &&
+      <Grid container spacing={2}>
+        <ProductNamerService />
+        <Button 
+              variant="contained"
+              justifyContent="flex-end"
+              onClick={() => {
+                  setState('start');
+              }}
+          >
+              Back</Button>
       </Grid>
+      }
+      
       <ProTip />
       <Copyright />
     </Container>

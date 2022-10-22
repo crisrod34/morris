@@ -10,9 +10,10 @@
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
     "lodash": "^4.17.21",
-    "openai": "^3.0.0",
+    "openai": "^3.0.1",
     "react": "latest",
     "react-dom": "latest",
+    "react-router-dom": "^6.4.2",
     "react-scripts": "latest",
     "styled-components": "latest"
   },

@@ -1,13 +1,12 @@
 import { TextField, Button } from "@mui/material";
 import { Box } from "@mui/system";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function ProductNamerInput({childToParent}) {
+export default function ProductNamerInput({childToParent, submitApiRequest}) {
 
     const [details, setDetails] = useState({
         productDescription: '',
         seedWords: '',
-        style: ''
     });
 
     const handleChange = (e) => {
@@ -16,10 +15,13 @@ export default function ProductNamerInput({childToParent}) {
             return {...prev, [name]: value}
         })
     };
+    
+    useEffect(() => {
+        childToParent(details);
+    });
 
     const handleSubmit = () => {
-        console.log(details);
-        childToParent(details);
+        submitApiRequest(details);
     };
 
     return (
@@ -46,15 +48,6 @@ export default function ProductNamerInput({childToParent}) {
                     fullWidth
                     margin="normal"
                     name="seedWords"
-                    onChange={handleChange}
-                />
-                <TextField
-                    id="outline-required"
-                    label="Style"
-                    placeholder="E.g. 'Quirky, weird, simple, clean'"
-                    fullWidth
-                    margin="normal" 
-                    name="style"
                     onChange={handleChange}
                 />
                 <Button 

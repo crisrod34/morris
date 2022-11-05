@@ -1,16 +1,16 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { Button } from '@mui/material';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid'; // Grid version 1
+import { Button, Link, Grid } from '@mui/material';
 import ProTip from './ProTip';
 
 import Header from './components/text/Header';
 
 import ProductNamerCard from './components/serviceCards/ProductNamerCard';
 import ProductNamerService from './components/services/ProductNamerService';
+
+import ImageGeneratorCard from './components/serviceCards/ImageGeneratorCard';
+import ImageGeneratorService from './components/services/ImageGeneratorService';
 
 function Copyright() {
   return (
@@ -33,15 +33,29 @@ export default function App() {
       <Header />
 
       {state == 'start' && (
-        <Grid container spacing={2}>
-          <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
-          <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
+        <Grid container spacing={{ xs:2, md:3 }} >
+            <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
+            <ImageGeneratorCard enterImagePrompt={() => setState('enter-image-prompt') }/>  
         </Grid>
       )}
 
       {state == 'enter-product-name' &&
       <Grid container spacing={2}>
         <ProductNamerService />
+        <Button 
+              variant="contained"
+              justifyContent="flex-end"
+              onClick={() => {
+                  setState('start');
+              }}
+          >
+              Back</Button>
+      </Grid>
+      }
+
+      {state == 'enter-image-prompt' &&
+      <Grid container spacing={2}>
+        <ImageGeneratorService />
         <Button 
               variant="contained"
               justifyContent="flex-end"

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Grid from '@mui/material/Grid';
+import { Typography } from "@mui/material";
 
 import ProductNamerInput from "../input/ProductNamerInput";
 import ProductNamerDescription from '../text/ProductNamerDescription';
@@ -58,7 +59,9 @@ export default function ProductNamerService() {
             
             {state == "responseReceived" && (
                 <Grid item>
-                    {openApiResponse.productNames}
+                    <Typography>
+                        {openApiResponse.productNames}
+                    </Typography>
                 </Grid>
             )}
         </Grid>

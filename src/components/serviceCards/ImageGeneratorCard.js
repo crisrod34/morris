@@ -6,25 +6,26 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import randomStickers from '../../media/randomStickers.jpg';
+import underwater from '../../media/underwater.png';
 
-export default function ProductNamerCard(props) {
+export default function ImageGeneratorCard(props) {
   return (
     <Grid item xs={6}>
       <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea onClick={props.enterProductName}>
+        <CardActionArea onClick={props.enterImagePrompt}>
           <CardMedia
             component="img"
             height="140"
-            image={randomStickers}
-            alt="a myriad of product names"
+            image={underwater}
+            alt="an underwater astronaut watching a football game"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Name Your Product
+              Create Your Art
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              If you're looking for a creative name for your new product, look no further than our naming service. We'll help you come up with a name that's both unique and catchy, so your product will stand out from the rest.
+            This service turns your wildest dreams into beautiful images. Just enter your ideas and we'll turn it into a 
+            stunning image that you can share with your friends and family.
             </Typography>
           </CardContent>
         </CardActionArea>

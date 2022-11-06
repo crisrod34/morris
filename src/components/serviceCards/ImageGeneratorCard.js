@@ -25,7 +25,7 @@ export default function ImageGeneratorCard(props) {
             </Typography>
             <Typography variant="body2" color="text.secondary">
             This service turns your wildest dreams into beautiful images. Just enter your ideas and we'll turn it into a 
-            stunning image that you can share with your friends and family.
+            stunning image that you can share with your friends and family. The art is all yours to use how you please!
             </Typography>
           </CardContent>
         </CardActionArea>

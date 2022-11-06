@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Grid from '@mui/material/Grid';
-import { Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 
 import ProductNamerInput from "../input/ProductNamerInput";
 import ProductNamerDescription from '../text/ProductNamerDescription';
@@ -26,6 +26,7 @@ export default function ProductNamerService() {
     }
 
     const submitApiRequest = () => {
+        setState("waiting-for-response");
         getApiResponse(data);
     }
 
@@ -48,7 +49,8 @@ export default function ProductNamerService() {
             setState("responseReceived");
           })
           .catch((error) => {
-            setOpenApiResponse("Error, please try again.")
+            console.log(error);
+            setState("error-in-request")
         });
     }
 
@@ -56,13 +58,24 @@ export default function ProductNamerService() {
         <Grid item>            
             <ProductNamerDescription />
             <ProductNamerInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
-            
+            {state == "waiting-for-response" && (
+                <Grid item>
+                    <CircularProgress />
+                </Grid>
+            )}
             {state == "responseReceived" && (
                 <Grid item>
                     <Typography>
                         {openApiResponse.productNames}
                     </Typography>
                 </Grid>
+            )}
+            {state == "error-in-request" && (
+                <Grid item>
+                <Typography>
+                    Error in request
+                </Typography>
+            </Grid>
             )}
         </Grid>
     )

@@ -34,28 +34,28 @@ export default function App() {
 
       {state == 'start' && (
         <Grid container spacing={{ xs:2, md:3 }} >
-            <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
             <ImageGeneratorCard enterImagePrompt={() => setState('enter-image-prompt') }/>  
+            <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
         </Grid>
       )}
-
-      {state == 'enter-product-name' &&
-      <Grid container spacing={2}>
-        <ProductNamerService />
-        <Button 
-              variant="contained"
-              justifyContent="flex-end"
-              onClick={() => {
-                  setState('start');
-              }}
-          >
-              Back</Button>
-      </Grid>
-      }
 
       {state == 'enter-image-prompt' &&
       <Grid container spacing={2}>
         <ImageGeneratorService />
+        <Button 
+              variant="contained"
+              justifyContent="flex-end"
+              onClick={() => {
+                setState('start');
+              }}
+              >
+              Back</Button>
+      </Grid>
+      }
+      
+      {state == 'enter-product-name' &&
+      <Grid container spacing={2}>
+        <ProductNamerService />
         <Button 
               variant="contained"
               justifyContent="flex-end"

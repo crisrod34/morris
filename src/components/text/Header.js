@@ -8,7 +8,7 @@ export default function Welcome() {
                 Welcome to Morris.
             </Typography>
             <Typography variant="h4" component="h2">
-                Create anything with just a few words.
+                Morris is a content platform that enables users to submit ideas and have them turned into dynamic content.
             </Typography>
         </Box>
     );

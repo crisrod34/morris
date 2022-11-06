@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Typography, Link } from "@mui/material";
+import { Box, Grid, Typography, CircularProgress } from "@mui/material";
 
 import ImageGeneratorInput from './../input/ImageGeneratorInput';
 import ImageGeneratorDescription from '../text/ImageGeneratorDescription';
@@ -25,6 +25,7 @@ export default function ImageGeneratorService() {
     }
 
     const submitApiRequest = () => {
+        setState("waiting-for-response");
         getApiResponse(data);
     }
 
@@ -32,19 +33,25 @@ export default function ImageGeneratorService() {
         openai.createImage({
             prompt: `${data.imagePrompt}`,
             n: 1,
-            size: "1024x1024",
+            size: "512x512",
+            response_format: "b64_json",
           })
           .then((response) => {
+            console.log(response.data.data[0].b64_json);
+            var base64 = response.data.data[0].b64_json;
             setOpenApiResponse({
-                imageUrl: `${response.data.data[0].url}`
+                imageBase64: base64
             });
+            /* setOpenApiResponse({
+                imageUrl: `${response.data.data[0].url}`
+            }); */
           })
           .then(() => {
             setState("response-received");
           })
           .catch((error) => {
+            console.log(error);
             setState("error-in-request")
-            setOpenApiResponse("Error, please try again.")
         });
     }
 
@@ -52,11 +59,25 @@ export default function ImageGeneratorService() {
         <Grid item>
             <ImageGeneratorDescription />            
             <ImageGeneratorInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
-            {state == "response-received" && (
+            {state == "waiting-for-response" && (
                 <Grid item>
-                    <Link href={openApiResponse.imageUrl} underline='hover' target='blank'>
+                    <CircularProgress />
+                </Grid>
+            )}
+            {state == "response-received" && (
+                <Grid item >
+                    {/* <Link href={openApiResponse.imageUrl} underline='hover' target='blank'>
                         Your Beautiful Image
-                    </Link>
+                    </Link> */}
+                    <Box
+                        component="img"
+                        sx={{
+                            height: 512,
+                            width: 512,
+                        }}
+                        src={"data:image/png;base64," + openApiResponse.imageBase64}
+                        padding={2}
+                    />
                 </Grid>
             )}
             {state == "error-in-request" && (

@@ -37,7 +37,6 @@ export default function ImageGeneratorService() {
             response_format: "b64_json",
           })
           .then((response) => {
-            console.log(response.data.data[0].b64_json);
             var base64 = response.data.data[0].b64_json;
             setOpenApiResponse({
                 imageBase64: base64
@@ -50,7 +49,6 @@ export default function ImageGeneratorService() {
             setState("response-received");
           })
           .catch((error) => {
-            console.log(error);
             setState("error-in-request")
         });
     }

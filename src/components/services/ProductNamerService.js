@@ -49,7 +49,6 @@ export default function ProductNamerService() {
             setState("responseReceived");
           })
           .catch((error) => {
-            console.log(error);
             setState("error-in-request")
         });
     }

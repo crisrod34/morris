@@ -1,10 +1,21 @@
 import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import { Button, Link, Grid } from '@mui/material';
-import ProTip from './ProTip';
+import { 
+  Box,
+  Button,
+  Link,
+  Grid,
+  AppBar,
+  Container,
+  CssBaseline,
+  Typography,
+  createTheme,
+  ThemeProvider,
+  Toolbar,
+  Stack,
+} from '@mui/material';
 
 import Header from './components/text/Header';
+import Footer from './components/Footer';
 
 import ProductNamerCard from './components/serviceCards/ProductNamerCard';
 import ProductNamerService from './components/services/ProductNamerService';
@@ -12,63 +23,146 @@ import ProductNamerService from './components/services/ProductNamerService';
 import ImageGeneratorCard from './components/serviceCards/ImageGeneratorCard';
 import ImageGeneratorService from './components/services/ImageGeneratorService';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Morris
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+const theme = createTheme();
 
 export default function App() {
   const [state, setState] = React.useState('start')
 
+  const ref = React.useRef(null);
+
   return (
-    <Container maxWidth="sm">
-      <Header />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AppBar position="relative">
+            <Toolbar>
+              <Typography variant="h6" color="inherit" nowrap>
+                Morris Content Platform
+              </Typography>
+            </Toolbar>
+      </AppBar>
 
       {state == 'start' && (
-        <Grid container spacing={{ xs:2, md:3 }} >
-            <ImageGeneratorCard enterImagePrompt={() => setState('enter-image-prompt') }/>  
-            <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
-        </Grid>
+        <main>
+          <Box
+            sx={{
+              bgcolor: 'background.paper',
+              pt: 4,
+              pb: 6,
+            }}
+          >
+            <Container maxWidth="sm">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                From ideas to content
+              </Typography>
+              <Typography variant="h5" align="center" color="text.secondary" parahraph>
+                If you need help generating engaging content, try our dynamic content creation tools! Just enter
+                a few keywords or descriptions for your use case, and our tools will provide you with fresh, creative
+                content ideas for you to use.
+              </Typography>
+              <Stack
+                sx={{ pt:4 }}
+                direction="row"
+                spacing={2}
+                justifyContent="center"
+              >
+                <Button 
+                  variant="contained" 
+                  onClick={() => {
+                    ref.current?.scrollIntoView({ behavior: 'smooth' })
+                  }}>
+                    Get Started
+                </Button>
+              </Stack>
+            </Container>
+          </Box>
+          <Container maxWidth="md" sx={{ pb:4 }}>
+            <Grid container spacing={2}>
+              <Stack
+                  sx={{ pt:4 }}
+                  direction="row"
+                  spacing={2}
+                  justifyContent="center"
+                  ref={ref}
+                >
+                <ImageGeneratorCard enterImagePrompt={() => setState('enter-image-prompt') }/>  
+                <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
+              </Stack>
+            </Grid>
+          </Container>
+        </main>
       )}
 
       {state == 'enter-image-prompt' &&
-      <Grid container spacing={2}>
-        <ImageGeneratorService />
-        <Button 
-              variant="contained"
-              justifyContent="flex-end"
-              onClick={() => {
-                setState('start');
-              }}
-              >
-              Back</Button>
-      </Grid>
-      }
-      
-      {state == 'enter-product-name' &&
-      <Grid container spacing={2}>
-        <ProductNamerService />
-        <Button 
-              variant="contained"
-              justifyContent="flex-end"
-              onClick={() => {
-                  setState('start');
-              }}
+        <main>
+          <Box
+            sx={{
+              bgcolor: 'background.paper',
+              pt: 4,
+              pb: 6,
+            }}
           >
-              Back</Button>
-      </Grid>
+            <Container maxWidth="sm">
+              <Grid container spacing={2}>
+                <Stack 
+                  sx={{ pt:2 }}
+                  direction="column"
+                  spacing={2}
+                  justifyContent="center">
+                  <ImageGeneratorService />
+                  <Button 
+                        variant="contained"
+                        justifyContent="flex-end"
+                        onClick={() => {
+                          setState('start');
+                        }}
+                        >
+                        Back</Button>
+                </Stack>
+              </Grid>
+            </Container>
+          </Box>
+        </main>
+      }
+
+      {state == 'enter-product-name' &&
+        <main>
+          <Box
+            sx={{
+              bgcolor: 'background.paper',
+              pt: 4,
+              pb: 6,
+            }}
+          >
+            <Container maxWidth="sm" >
+              <Grid container >
+                <Stack 
+                  sx={{ pt:2 }}
+                  direction="column"
+                  spacing={2}
+                  justifyContent="center">
+                <ProductNamerService />
+                <Button 
+                      variant="contained"
+                      justifyContent="flex-end"
+                      onClick={() => {
+                        setState('start');
+                      }}
+                      >
+                      Back</Button>
+                </Stack>
+              </Grid>
+            </Container>
+          </Box>
+        </main>
       }
       
-      <ProTip />
-      <Copyright />
-    </Container>
+      <Footer />
+    </ThemeProvider>
   );
 }

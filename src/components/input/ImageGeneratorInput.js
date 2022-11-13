@@ -41,6 +41,7 @@ export default function ImageGeneratorInput({childToParent, submitApiRequest}) {
                 />
                 <Button 
                 variant="contained"
+                fullWidth
                 onClick={() => {
                     handleSubmit();
                 }}

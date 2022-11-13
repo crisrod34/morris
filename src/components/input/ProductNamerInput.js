@@ -52,6 +52,7 @@ export default function ProductNamerInput({childToParent, submitApiRequest}) {
                 />
                 <Button 
                 variant="contained"
+                fullWidth
                 onClick={() => {
                     handleSubmit();
                 }}

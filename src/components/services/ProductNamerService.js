@@ -58,9 +58,11 @@ export default function ProductNamerService() {
             <ProductNamerDescription />
             <ProductNamerInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
             {state == "waiting-for-response" && (
-                <Grid item>
-                    <CircularProgress />
-                </Grid>
+                <Stack 
+                    alignItems="center"
+                    sx={{ pt:3, pb: 2 }}>
+                    <CircularProgress size="6rem" />
+                </Stack>
             )}
             {state == "responseReceived" && (
                 <Grid item>

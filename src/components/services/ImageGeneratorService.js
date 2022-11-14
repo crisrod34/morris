@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Grid, Typography, CircularProgress } from "@mui/material";
+import { Box, Grid, Stack, Typography, CircularProgress } from "@mui/material";
 
 import ImageGeneratorInput from './../input/ImageGeneratorInput';
 import ImageGeneratorDescription from '../text/ImageGeneratorDescription';
@@ -58,24 +58,32 @@ export default function ImageGeneratorService() {
             <ImageGeneratorDescription />            
             <ImageGeneratorInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
             {state == "waiting-for-response" && (
-                <Grid item>
-                    <CircularProgress />
-                </Grid>
+                <Stack 
+                    alignItems="center"
+                    sx={{ pt:3, pb: 2 }}>
+                    <CircularProgress size="6rem" />
+                </Stack>
             )}
             {state == "response-received" && (
                 <Grid item >
                     {/* <Link href={openApiResponse.imageUrl} underline='hover' target='blank'>
                         Your Beautiful Image
                     </Link> */}
+                    <Stack
+                        sx={{ pt:2 }}
+                        direction="column"
+                        spacing={2}
+                        alignItems="center">
                     <Box
                         component="img"
                         sx={{
-                            height: 512,
-                            width: 512,
+                            height: "20rem",
+                            width: "20rem"
                         }}
                         src={"data:image/png;base64," + openApiResponse.imageBase64}
-                        padding={2}
+                        padding={1}
                     />
+                    </Stack>
                 </Grid>
             )}
             {state == "error-in-request" && (

@@ -4,6 +4,7 @@ import {
   Button,
   Link,
   Grid,
+  IconButton,
   AppBar,
   Container,
   CssBaseline,
@@ -13,6 +14,7 @@ import {
   Toolbar,
   Stack,
 } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
 
 import Header from './components/text/Header';
 import Footer from './components/Footer';
@@ -34,11 +36,21 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar position="relative">
-            <Toolbar>
-              <Typography variant="h6" color="inherit" nowrap>
-                Morris Content Platform
-              </Typography>
-            </Toolbar>
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            href="/"
+          >
+            <HomeIcon />
+          </IconButton>
+          <Typography variant="h6" color="inherit" nowrap>
+            Morris Content Platform
+          </Typography>
+        </Toolbar>
       </AppBar>
 
       {state == 'start' && (
@@ -84,8 +96,8 @@ export default function App() {
           <Container maxWidth="md" sx={{ pb:4 }}>
             <Grid container spacing={2}>
               <Stack
-                  sx={{ pt:4 }}
-                  direction="row"
+                  sx={{ pt:4, px: 1 }}
+                  direction={{ xs: 'column', sm: 'row' }}
                   spacing={2}
                   justifyContent="center"
                   ref={ref}
@@ -140,7 +152,7 @@ export default function App() {
             }}
           >
             <Container maxWidth="sm" >
-              <Grid container >
+              <Grid container>
                 <Stack 
                   sx={{ pt:2 }}
                   direction="column"

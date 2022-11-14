@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Grid from '@mui/material/Grid';
-import { CircularProgress, Typography } from "@mui/material";
+import { CircularProgress, Stack, Typography } from "@mui/material";
 
 import ProductNamerInput from "../input/ProductNamerInput";
 import ProductNamerDescription from '../text/ProductNamerDescription';
@@ -41,9 +41,11 @@ export default function ProductNamerService() {
             presence_penalty: 0.9,
           })
           .then((response) => {
+            let productNames = response.data.choices[0].text.split(":")[1].split(',');
             setOpenApiResponse({
-                productNames: `${response.data.choices[0].text}`
+                productNames: `${productNames}`
             });
+            console.log(productNames);
           })
           .then(() => {
             setState("responseReceived");
@@ -58,13 +60,18 @@ export default function ProductNamerService() {
             <ProductNamerDescription />
             <ProductNamerInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
             {state == "waiting-for-response" && (
-                <Grid item>
-                    <CircularProgress />
-                </Grid>
+                <Stack 
+                    alignItems="center"
+                    sx={{ pt:3, pb: 2 }}>
+                    <CircularProgress size="6rem" />
+                </Stack>
             )}
             {state == "responseReceived" && (
                 <Grid item>
-                    <Typography>
+                    <Typography variant="inherit">
+                        Morris found the following names for your product:
+                    </Typography>
+                    <Typography variant="h4">
                         {openApiResponse.productNames}
                     </Typography>
                 </Grid>

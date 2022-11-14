@@ -41,9 +41,6 @@ export default function ImageGeneratorService() {
             setOpenApiResponse({
                 imageBase64: base64
             });
-            /* setOpenApiResponse({
-                imageUrl: `${response.data.data[0].url}`
-            }); */
           })
           .then(() => {
             setState("response-received");
@@ -55,12 +52,19 @@ export default function ImageGeneratorService() {
 
     return (
         <Grid item>
+            <Typography sx={{
+                    textDecoration: "underline",
+                    fontSize: "30px",
+                    textAlign: "center"
+                }}>
+                    Create Your Art
+            </Typography>
             <ImageGeneratorDescription />            
             <ImageGeneratorInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
             {state == "waiting-for-response" && (
                 <Stack 
                     alignItems="center"
-                    sx={{ pt:3, pb: 2 }}>
+                    sx={{ pt:3, pb: 3 }}>
                     <CircularProgress size="6rem" />
                 </Stack>
             )}
@@ -78,7 +82,8 @@ export default function ImageGeneratorService() {
                         component="img"
                         sx={{
                             height: "20rem",
-                            width: "20rem"
+                            width: "20rem",
+                            borderRadius: 5,
                         }}
                         src={"data:image/png;base64," + openApiResponse.imageBase64}
                         padding={1}
@@ -89,7 +94,7 @@ export default function ImageGeneratorService() {
             {state == "error-in-request" && (
                 <Grid item>
                 <Typography>
-                    Error in request
+                    Error. Please try again.
                 </Typography>
             </Grid>
             )}

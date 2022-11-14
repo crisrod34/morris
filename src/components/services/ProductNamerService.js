@@ -33,7 +33,21 @@ export default function ProductNamerService() {
     const getApiResponse = (data) => {
         openai.createCompletion({
             model: "text-davinci-002",
-            prompt: `Product description: A home milkshake maker\nSeed words: fast, healthy, compact. \nProduct names: HomeShaker, Fit Shaker, QuickShake, Shake Maker\n\nProduct description: ${data.productDescription}.\nSeed words: ${data.seedWords}.`,
+            prompt: `Product description: 
+                    A home milkshake maker\n
+                    Seed words: fast, healthy, compact. \n
+                    Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker\n
+                    \nProduct description: an apocalyptic coffee maker \n
+                    Seed words: clean, dangerous, modern\n
+                    Product names: Last Chance Coffee, Hazardous Grounds, End of the Line Coffee\n
+                    \n Product description: a non-profit that helps people find homeless in need\n
+                    Seed words: kind, caring, humanitarian, charity\n
+                    Product names: Web of Care, Find A Friend, Helping Hands, Safe Haven \n
+                    \n Product description: a fashion website that finds stylists according to your fashion taste\n
+                    Seed words: easy, modern, stylish, trendy, popular\n
+                    Product names: Fashion Finder, Style Seeker, Trend Tracker, Popularity Meter \n
+                    \nProduct description: ${data.productDescription}.\n
+                    Seed words: ${data.seedWords}.`,
             temperature: 1.0,
             max_tokens: 60,
             top_p: 1.0,
@@ -56,22 +70,33 @@ export default function ProductNamerService() {
     }
 
     return (
-        <Grid item>            
+        <Grid item>   
+            <Typography sx={{
+                    textDecoration: "underline",
+                    fontSize: "30px",
+                    textAlign: "center"
+                }}>
+                    Find a Product Name
+            </Typography>         
             <ProductNamerDescription />
             <ProductNamerInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
             {state == "waiting-for-response" && (
                 <Stack 
                     alignItems="center"
-                    sx={{ pt:3, pb: 2 }}>
+                    sx={{ pt:3, pb: 3 }}>
                     <CircularProgress size="6rem" />
                 </Stack>
             )}
             {state == "responseReceived" && (
                 <Grid item>
-                    <Typography variant="inherit">
+                    <Typography sx={{
+                        fontSize: 20
+                    }}>
                         Morris found the following names for your product:
                     </Typography>
-                    <Typography variant="h4">
+                    <Typography sx={{
+                        fontSize: 36
+                    }}>
                         {openApiResponse.productNames}
                     </Typography>
                 </Grid>
@@ -79,7 +104,7 @@ export default function ProductNamerService() {
             {state == "error-in-request" && (
                 <Grid item>
                 <Typography>
-                    Error in request
+                    Error. Please try again.
                 </Typography>
             </Grid>
             )}

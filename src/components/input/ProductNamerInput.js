@@ -24,6 +24,13 @@ export default function ProductNamerInput({childToParent, submitApiRequest}) {
         submitApiRequest(details);
     };
 
+    const handleEnter = (e) => {
+        if(e.keyCode == 13){
+            e.preventDefault();
+            handleSubmit();
+         }
+    };
+
     return (
         <Box
             component="form"
@@ -38,6 +45,7 @@ export default function ProductNamerInput({childToParent, submitApiRequest}) {
                     fullWidth
                     margin="normal"
                     name="productDescription"
+                    onKeyDown={handleEnter}
                     onChange={handleChange}
                 />
                 <TextField
@@ -48,6 +56,7 @@ export default function ProductNamerInput({childToParent, submitApiRequest}) {
                     fullWidth
                     margin="normal"
                     name="seedWords"
+                    onKeyDown={handleEnter}
                     onChange={handleChange}
                 />
                 <Button 

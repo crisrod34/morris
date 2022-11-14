@@ -23,6 +23,13 @@ export default function ImageGeneratorInput({childToParent, submitApiRequest}) {
         submitApiRequest(details);
     };
 
+    const handleEnter = (e) => {
+        if(e.keyCode == 13){
+            e.preventDefault();
+            handleSubmit();
+         }
+    };
+
     return (
         <Box
             component="form"
@@ -37,6 +44,7 @@ export default function ImageGeneratorInput({childToParent, submitApiRequest}) {
                     fullWidth
                     margin="normal"
                     name="imagePrompt"
+                    onKeyDown={handleEnter}
                     onChange={handleChange}
                 />
                 <Button 

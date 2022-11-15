@@ -34,7 +34,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
+      <AppBar position="fixed" >
         <Toolbar>
           <IconButton
             size="large"
@@ -46,14 +46,15 @@ export default function App() {
           >
             <HomeIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit" nowrap="true">
+          <Typography color="inherit" nowrap="true"
+            sx={{ fontSize: "20px"}}>
             Content Spawn
           </Typography>
           <IconButton
             size="large"
-            edge="start"
+            edge="end"
             color="inherit"
-            aria-label="menu"
+            aria-label="mail"
             sx={{ marginLeft: "auto" }}
             href="mailto:chrodriguez34@gmail.com">
               <Mail />
@@ -66,7 +67,7 @@ export default function App() {
           <Box
             sx={{
               bgcolor: 'background.paper',
-              pt: 4,
+              pt: 10,
               pb: 6,
             }}
           >
@@ -127,7 +128,7 @@ export default function App() {
           <Box
             sx={{
               bgcolor: 'background.paper',
-              pt: 4,
+              pt: 12,
               pb: 6,
             }}
           >
@@ -158,7 +159,7 @@ export default function App() {
           <Box
             sx={{
               bgcolor: 'background.paper',
-              pt: 4,
+              pt: 12,
               pb: 6,
             }}
           >

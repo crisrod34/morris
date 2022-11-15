@@ -2,7 +2,6 @@ import * as React from 'react';
 import { 
   Box,
   Button,
-  Link,
   Grid,
   IconButton,
   AppBar,
@@ -17,7 +16,6 @@ import {
 import HomeIcon from '@mui/icons-material/Home';
 import Mail from '@mui/icons-material/Mail';
 
-import Header from './components/text/Header';
 import Footer from './components/Footer';
 
 import ProductNamerCard from './components/serviceCards/ProductNamerCard';
@@ -49,7 +47,7 @@ export default function App() {
             <HomeIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" nowrap="true">
-            Morris Content Platform
+            Content Spawn
           </Typography>
           <IconButton
             size="large"

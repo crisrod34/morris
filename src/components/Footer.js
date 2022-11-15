@@ -1,11 +1,11 @@
 import { Typography, Link } from "@mui/material"
 
-export default function Footer(props) {
+export default function Footer() {
     return (
     <Typography variant="body2" color="text.secondary" align="center" sx={{ pb: 4 }}>
       {'Copyright © '}
       <Link color="inherit" href="https://contentspawn.com/">
-        Morris
+        Content Spawn
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

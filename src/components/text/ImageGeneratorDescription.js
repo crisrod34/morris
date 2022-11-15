@@ -1,4 +1,4 @@
-import { Box, List, ListSubheader, ListItem, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 export default function ImageGeneratorDescription() {
     return (

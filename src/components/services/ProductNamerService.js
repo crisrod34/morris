@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import Grid from '@mui/material/Grid';
-import { CircularProgress, Stack, Typography } from "@mui/material";
+import { CircularProgress, Grid, Stack, Typography } from "@mui/material";
 
 import ProductNamerInput from "../input/ProductNamerInput";
 import ProductNamerDescription from '../text/ProductNamerDescription';
@@ -92,7 +91,7 @@ export default function ProductNamerService() {
                     <Typography sx={{
                         fontSize: 20
                     }}>
-                        Morris found the following names for your product:
+                        We found the following names for your product:
                     </Typography>
                     <Typography sx={{
                         fontSize: 36

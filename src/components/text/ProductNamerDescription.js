@@ -8,7 +8,7 @@ export default function ProductNamerDescription() {
                 and tell us a few key characteristics (seed words) that define your product.
             </Typography>
             <Typography>
-                Feel free to generate product names until you have found the perfect one!
+                You can generate product names until you have found the perfect one!
             </Typography>
         </Stack>
     );

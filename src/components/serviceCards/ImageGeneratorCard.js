@@ -21,7 +21,7 @@ export default function ImageGeneratorCard(props) {
           />
           <CardContent sx={{ flexGrow: 1 }}>
             <Typography gutterBottom variant="h5" component="h2">
-              Create Your Art
+              Image Generator
             </Typography>
             <Typography variant="body2" color="text.secondary">
               This service turns your wildest dreams into beautiful images. Just enter your ideas and we'll turn it into a 

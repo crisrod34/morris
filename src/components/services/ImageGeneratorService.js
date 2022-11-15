@@ -54,10 +54,10 @@ export default function ImageGeneratorService() {
         <Grid item>
             <Typography sx={{
                     textDecoration: "underline",
-                    fontSize: "30px",
+                    fontSize: "4rem",
                     textAlign: "center"
                 }}>
-                    Create Your Art
+                    Image Generator
             </Typography>
             <ImageGeneratorDescription />            
             <ImageGeneratorInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>

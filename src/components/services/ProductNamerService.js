@@ -39,7 +39,7 @@ export default function ProductNamerService() {
                     \nProduct description: an apocalyptic coffee maker \n
                     Seed words: clean, dangerous, modern\n
                     Product names: Last Chance Coffee, Hazardous Grounds, End of the Line Coffee\n
-                    \n Product description: a non-profit that helps people find homeless in need\n
+                    \n Product description: a non-profit that helps people find homeless people in need\n
                     Seed words: kind, caring, humanitarian, charity\n
                     Product names: Web of Care, Find A Friend, Helping Hands, Safe Haven \n
                     \n Product description: a fashion website that finds stylists according to your fashion taste\n
@@ -72,7 +72,7 @@ export default function ProductNamerService() {
         <Grid item>   
             <Typography sx={{
                     textDecoration: "underline",
-                    fontSize: "30px",
+                    fontSize: "4rem",
                     textAlign: "center"
                 }}>
                     Find a Product Name
@@ -89,12 +89,12 @@ export default function ProductNamerService() {
             {state == "responseReceived" && (
                 <Grid item>
                     <Typography sx={{
-                        fontSize: 20
+                        fontSize: "2rem"
                     }}>
                         We found the following names for your product:
                     </Typography>
                     <Typography sx={{
-                        fontSize: 36
+                        fontSize: "3rem"
                     }}>
                         {openApiResponse.productNames}
                     </Typography>

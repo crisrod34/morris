@@ -17,25 +17,38 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function ImageGeneratorDescription() {
     return (
-        <Box>
-            <Stack 
-                alignItems="left"    
-                spacing={1}>
+        <Box flexGrow={1} >
                 <Typography sx={{
-                    fontSize: "20px"
+                    fontSize: "1.4rem"
                 }}>
                     This service turns your wildest dreams into beautiful images. Just enter your ideas and we'll turn it into a 
                     stunning image that you can share with your friends and family. The art is all yours to use how you please!
                 </Typography>
                 <Typography sx={{
                     fontWeight: 700,
-                    lineHeight: '24px',
+                    fontSize: '1.4rem',
+                }}>
+                    Well written prompts include:
+                </Typography>
+                <Typography sx={{
+                    fontWeight: 700,
+                    fontSize: '1.3rem',
+                }}>
+                    <ol>
+                        <li>A main subject of the image (an astronaut; a blue octopus; a green alien)</li>
+                        <li>Context for the subject (discovering a new planet; playing with a green rhinocerous; teaching sign language)</li>
+                        <li>The art style for the image (as a salvador dali painting, a 3d render, digital art)</li>
+                    </ol>
+                </Typography>
+                <Typography sx={{
+                    fontWeight: 700,
+                    lineHeight: '40px',
                     fontSize: '20px',
                 }}>
                     Examples:
                 </Typography>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                    <Grid item alignItems={"center"} xs={6} >
+                    <Grid item xs={6} maxWidth="100%">
                         <Item>
                             <Stack>
                                 <Box
@@ -53,7 +66,7 @@ export default function ImageGeneratorDescription() {
                             </Stack>
                         </Item>
                     </Grid>
-                    <Grid item xs={6} >
+                    <Grid item xs={6} maxWidth="100%">
                         <Item>
                             <Stack>
                                 <Box
@@ -70,7 +83,7 @@ export default function ImageGeneratorDescription() {
                             </Stack>
                         </Item>
                     </Grid>
-                    <Grid item xs={6} >
+                    <Grid item xs={6} maxWidth="100%">
                         <Item>
                             <Stack>
                                 <Box
@@ -87,7 +100,7 @@ export default function ImageGeneratorDescription() {
                             </Stack>
                         </Item>
                     </Grid>
-                    <Grid item xs={6} >
+                    <Grid item xs={6} maxWidth="100%">
                         <Item>
                             <Stack>
                                 <Box
@@ -105,7 +118,6 @@ export default function ImageGeneratorDescription() {
                         </Item>
                     </Grid>
                 </Grid>
-            </Stack>
         </Box>
     );
 }

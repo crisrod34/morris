@@ -132,12 +132,13 @@ export default function App() {
               pb: 6,
             }}
           >
-            <Container maxWidth="sm">
+            <Container >
               <Grid container spacing={2}>
                 <Stack
                   direction="column"
                   spacing={2}
-                  justifyContent="center">
+                  justifyContent="center"
+                  maxWidth={'100%'}>
                   <ImageGeneratorService />
                   <Button 
                         variant="contained"
@@ -163,7 +164,7 @@ export default function App() {
               pb: 6,
             }}
           >
-            <Container maxWidth="sm" >
+            <Container >
               <Grid container>
                 <Stack 
                   direction="column"

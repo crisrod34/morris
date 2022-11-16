@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { CircularProgress, Grid, Stack, Typography } from "@mui/material";
 
-import ProductNamerInput from "../input/ProductNamerInput";
-import ProductNamerDescription from '../text/ProductNamerDescription';
+import SimpleSummarizationInput from "../input/SimpleSummarizationInput";
+import SimpleSummarizationDescription from "../text/SimpleSummarizationDescription";
 
 const { Configuration, OpenAIApi } = require('openai');
 
@@ -12,7 +12,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 
-export default function ProductNamerService() {
+export default function SimpleSummarizationService() {
 
     const [state, setState] = useState("noInput");
 
@@ -32,31 +32,17 @@ export default function ProductNamerService() {
     const getApiResponse = (data) => {
         openai.createCompletion({
             model: "text-davinci-002",
-            prompt: `Product description: 
-                    A home milkshake maker\n
-                    Seed words: fast, healthy, compact. \n
-                    Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker\n
-                    \nProduct description: an apocalyptic coffee maker \n
-                    Seed words: clean, dangerous, modern\n
-                    Product names: Last Chance Coffee, Hazardous Grounds, End of the Line Coffee\n
-                    \n Product description: a non-profit that helps people find homeless people in need\n
-                    Seed words: kind, caring, humanitarian, charity\n
-                    Product names: Web of Care, Find A Friend, Helping Hands, Safe Haven \n
-                    \n Product description: a fashion website that finds stylists according to your fashion taste\n
-                    Seed words: easy, modern, stylish, trendy, popular\n
-                    Product names: Fashion Finder, Style Seeker, Trend Tracker, Popularity Meter \n
-                    \nProduct description: ${data.productDescription}.\n
-                    Seed words: ${data.seedWords}.`,
-            temperature: 1.0,
-            max_tokens: 60,
+            prompt: `Summarize this text by gathering the main points: \n\n${data.longText}`,
+            temperature: 0.7,
+            max_tokens: 1000,
             top_p: 1.0,
-            frequency_penalty: 0.9,
-            presence_penalty: 0.9,
+            frequency_penalty: 0.0,
+            presence_penalty: 0.0,
           })
           .then((response) => {
-            let productNames = response.data.choices[0].text.split(":")[1].split(',');
+            let summarizedText = response.data.choices[0].text;
             setOpenApiResponse({
-                productNames: `${productNames}`
+                summarizedText: `${summarizedText}`
             });
           })
           .then(() => {
@@ -74,10 +60,10 @@ export default function ProductNamerService() {
                     fontSize: "4rem",
                     textAlign: "center"
                 }}>
-                    Find a Product Name
-            </Typography>         
-            <ProductNamerDescription />
-            <ProductNamerInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
+                    Simple Summarization
+            </Typography>      
+            <SimpleSummarizationDescription />   
+            <SimpleSummarizationInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
             {state == "waiting-for-response" && (
                 <Stack 
                     alignItems="center"
@@ -90,12 +76,12 @@ export default function ProductNamerService() {
                     <Typography sx={{
                         fontSize: "2rem"
                     }}>
-                        We found the following names for your product:
+                        Simple Summarization:
                     </Typography>
                     <Typography sx={{
-                        fontSize: "3rem"
+                        fontSize: "1.4rem"
                     }}>
-                        {openApiResponse.productNames}
+                        {openApiResponse.summarizedText}
                     </Typography>
                 </Grid>
             )}

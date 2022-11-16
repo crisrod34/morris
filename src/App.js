@@ -24,6 +24,9 @@ import ProductNamerService from './components/services/ProductNamerService';
 import ImageGeneratorCard from './components/serviceCards/ImageGeneratorCard';
 import ImageGeneratorService from './components/services/ImageGeneratorService';
 
+import SimpleSummarizationCard from './components/serviceCards/SimpleSummarizationCard';
+import SimpleSummarizationService from './components/services/SimpleSummarizationService';
+
 const theme = createTheme();
 
 export default function App() {
@@ -115,8 +118,9 @@ export default function App() {
                   justifyContent="center"
                   ref={ref}
                 >
-                <ImageGeneratorCard enterImagePrompt={() => setState('enter-image-prompt') }/>  
-                <ProductNamerCard enterProductName={() => setState('enter-product-name') }/>
+                <ImageGeneratorCard enterImagePrompt={() => setState('enter-image-prompt') } />  
+                <ProductNamerCard enterProductName={() => setState('enter-product-name') } />
+                <SimpleSummarizationCard enterLongText={() => setState('enter-long-text') } />
               </Stack>
             </Grid>
           </Container>
@@ -171,6 +175,37 @@ export default function App() {
                   spacing={2}
                   justifyContent="center">
                 <ProductNamerService />
+                <Button 
+                      variant="contained"
+                      justifyContent="flex-end"
+                      onClick={() => {
+                        setState('start');
+                      }}
+                      >
+                      Back</Button>
+                </Stack>
+              </Grid>
+            </Container>
+          </Box>
+        </main>
+      }
+
+      {state == 'enter-long-text' &&
+        <main>
+          <Box
+            sx={{
+              bgcolor: 'background.paper',
+              pt: 12,
+              pb: 6,
+            }}
+          >
+            <Container >
+              <Grid container>
+                <Stack 
+                  direction="column"
+                  spacing={2}
+                  justifyContent="center">
+                <SimpleSummarizationService />
                 <Button 
                       variant="contained"
                       justifyContent="flex-end"

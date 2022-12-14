@@ -36,7 +36,9 @@ export default function SloganGeneratorInput({childToParent, submitApiRequest}) 
         <Box
             component="form"
             noValidate
-            autoComplete="off">
+            autoComplete="off"
+            flexGrow={1} 
+            padding={"1rem"}>
             <div>
                 <TextField
                     id="outline-required"

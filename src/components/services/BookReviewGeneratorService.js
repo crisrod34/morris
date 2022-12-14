@@ -34,7 +34,7 @@ export default function SimpleSummarizationService() {
             model: "text-davinci-003",
             prompt: `Give me a book review for: \n\n${data.bookTitle}`,
             temperature: 0.7,
-            max_tokens: 1000,
+            max_tokens: 2000,
             top_p: 1.0,
             frequency_penalty: 0.0,
             presence_penalty: 0.0,

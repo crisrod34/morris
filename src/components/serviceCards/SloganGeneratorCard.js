@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import randomStickers from '../../media/randomStickers.jpg';
+import slogan from '../../media/slogan.jpg';
 
 export default function SloganGeneratorCard(props) {
   return (
@@ -16,7 +16,7 @@ export default function SloganGeneratorCard(props) {
           <CardMedia
             component="img"
             height="140"
-            image={randomStickers}
+            image={slogan}
             alt="a myriad of product names"
           />
           <CardContent sx={{ flexGrow: 1 }}>

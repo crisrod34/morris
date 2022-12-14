@@ -34,7 +34,9 @@ export default function BookReviewGeneratorInput({childToParent, submitApiReques
         <Box
             component="form"
             noValidate
-            autoComplete="off">
+            autoComplete="off"
+            flexGrow={1} 
+            padding={"1rem"}>
             <div>
                 <TextField
                     required

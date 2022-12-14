@@ -79,8 +79,8 @@ export default function ImageGeneratorService() {
                     <Box
                         component="img"
                         sx={{
-                            height: "50%",
-                            width: "50%",
+                            height: "70%",
+                            width: "70%",
                             borderRadius: 5,
                         }}
                         src={"data:image/png;base64," + openApiResponse.imageBase64}

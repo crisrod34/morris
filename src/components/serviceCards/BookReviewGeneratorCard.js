@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import text_summary from '../../media/text_summary.jpg';
+import book_review from '../../media/book_review.jpg';
 
 export default function BookReviewGeneratorCard(props) {
   return (
@@ -16,7 +16,7 @@ export default function BookReviewGeneratorCard(props) {
           <CardMedia
             component="img"
             height="140"
-            image={text_summary}
+            image={book_review}
             alt="an underwater astronaut watching a football game"
           />
           <CardContent sx={{ flexGrow: 1 }}>

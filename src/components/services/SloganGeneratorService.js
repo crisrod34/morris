@@ -58,7 +58,7 @@ export default function SloganGeneratorService() {
             });
           })
           .then(() => {
-            setState("responseReceived");
+            setState("response-received");
           })
           .catch((error) => {
             setState("error-in-request")

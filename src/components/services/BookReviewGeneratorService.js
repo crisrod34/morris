@@ -40,13 +40,13 @@ export default function SimpleSummarizationService() {
             presence_penalty: 0.0,
           })
           .then((response) => {
-            let summarizedText = response.data.choices[0].text;
+            let bookReview = response.data.choices[0].text;
             setOpenApiResponse({
-                summarizedText: `${summarizedText}`
+                bookReview: `${bookReview}`
             });
           })
           .then(() => {
-            setState("responseReceived");
+            setState("response-received");
           })
           .catch((error) => {
             setState("error-in-request")
@@ -71,7 +71,7 @@ export default function SimpleSummarizationService() {
                     <CircularProgress size="6rem" />
                 </Stack>
             )}
-            {state == "responseReceived" && (
+            {state == "response-received" && (
                 <Grid item>
                     <Typography sx={{
                         fontSize: "2rem"
@@ -81,7 +81,7 @@ export default function SimpleSummarizationService() {
                     <Typography sx={{
                         fontSize: "1.4rem"
                     }}>
-                        {openApiResponse.summarizedText}
+                        {openApiResponse.bookReview}
                     </Typography>
                 </Grid>
             )}

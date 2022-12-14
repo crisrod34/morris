@@ -6,7 +6,7 @@ export default function ProductNamerInput({childToParent, submitApiRequest}) {
 
     const [details, setDetails] = useState({
         productDescription: '',
-        seedWords: '',
+        keyCharacteristics: '',
     });
 
     const handleChange = (e) => {
@@ -51,11 +51,11 @@ export default function ProductNamerInput({childToParent, submitApiRequest}) {
                 <TextField
                     required
                     id="outline-required"
-                    label="Seed Words"
+                    label="Key Characteristics"
                     placeholder="Essential product traits"
                     fullWidth
                     margin="normal"
-                    name="seedWords"
+                    name="keyCharacteristics"
                     onKeyDown={handleEnter}
                     onChange={handleChange}
                 />
@@ -66,7 +66,7 @@ export default function ProductNamerInput({childToParent, submitApiRequest}) {
                     handleSubmit();
                 }}
             >
-                Generate</Button>
+                Generate Product Name</Button>
                 
             </div>
         </Box>

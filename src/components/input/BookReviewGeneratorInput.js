@@ -2,7 +2,7 @@ import { TextField, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState, useEffect } from "react";
 
-export default function ImageGeneratorInput({childToParent, submitApiRequest}) {
+export default function BookReviewGeneratorInput({childToParent, submitApiRequest}) {
 
     const [details, setDetails] = useState({
         imagePrompt: '',
@@ -39,11 +39,12 @@ export default function ImageGeneratorInput({childToParent, submitApiRequest}) {
                 <TextField
                     required
                     id="outline-required"
-                    label="Prompt"
-                    placeholder="What do you want your image to include?"
+                    label="Book Title and Author"
+                    placeholder="Enter the title and author here"
                     fullWidth
+                    multiline
                     margin="normal"
-                    name="imagePrompt"
+                    name="bookTitle"
                     onKeyDown={handleEnter}
                     onChange={handleChange}
                 />
@@ -54,8 +55,7 @@ export default function ImageGeneratorInput({childToParent, submitApiRequest}) {
                     handleSubmit();
                 }}
                 >
-                Generate Image</Button>
-
+                Generate Review</Button>
             </div>
         </Box>
         

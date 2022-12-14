@@ -6,26 +6,26 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import underwater from '../../media/underwater.png';
+import text_summary from '../../media/text_summary.jpg';
 
-export default function ImageGeneratorCard(props) {
+export default function BookReviewGeneratorCard(props) {
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-        <CardActionArea onClick={props.enterImagePrompt}>
+        <CardActionArea onClick={props.enterBookTitle}>
           <CardMedia
             component="img"
             height="140"
-            image={underwater}
+            image={text_summary}
             alt="an underwater astronaut watching a football game"
           />
           <CardContent sx={{ flexGrow: 1 }}>
-            <Typography gutterBottom variant="h5" component="h2" >
-              A.I. Image Generator
+            <Typography gutterBottom variant="h5" component="h2">
+              Book Review Generator
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              This service turns your wildest dreams into beautiful images. Just enter your ideas and we'll turn it into a 
-              stunning image that you can share with your friends and family. The art is all yours to use how you please!
+              This is a service that can generate a book review for almost any book written before 2021. 
+              All you need to do is input the title of the book and let GPT-3 do the rest!
             </Typography>
           </CardContent>
         </CardActionArea>

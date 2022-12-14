@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { CircularProgress, Grid, Stack, Typography } from "@mui/material";
 
-import SimpleSummarizationInput from "../input/SimpleSummarizationInput";
-import SimpleSummarizationDescription from "../text/SimpleSummarization/SimpleSummarizationDescription";
+import BookReviewGeneratorInput from '../input/BookReviewGeneratorInput';
+import BookReviewGeneratorDescription from '../text/BookReviewGenerator/BookReviewGeneratorDescription';
 
 const { Configuration, OpenAIApi } = require('openai');
 
@@ -32,7 +32,7 @@ export default function SimpleSummarizationService() {
     const getApiResponse = (data) => {
         openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `Summarize this text by gathering the main points: \n\n${data.longText}`,
+            prompt: `Give me a book review for: \n\n${data.bookTitle}`,
             temperature: 0.7,
             max_tokens: 1000,
             top_p: 1.0,
@@ -60,10 +60,10 @@ export default function SimpleSummarizationService() {
                     textAlign: "center",
                     lineHeight: "2.5rem"
                 }}>
-                    Simple Summarization
+                    Book Review Generator
             </Typography>      
-            <SimpleSummarizationDescription />   
-            <SimpleSummarizationInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
+            <BookReviewGeneratorDescription />   
+            <BookReviewGeneratorInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
             {state == "waiting-for-response" && (
                 <Stack 
                     alignItems="center"
@@ -76,7 +76,7 @@ export default function SimpleSummarizationService() {
                     <Typography sx={{
                         fontSize: "2rem"
                     }}>
-                        Simple Summarization:
+                        Book Review:
                     </Typography>
                     <Typography sx={{
                         fontSize: "1.4rem"

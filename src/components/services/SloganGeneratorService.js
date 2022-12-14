@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { CircularProgress, Grid, Stack, Typography } from "@mui/material";
 
-import ProductNamerInput from "../input/ProductNamerInput";
-import ProductNamerDescription from '../text/ProductNamer/ProductNamerDescription';
-import ProductNamerHowTo from '../text/ProductNamer/ProductNamerHowTo';
+import SloganGeneratorInput from "../input/SloganGeneratorInput";
+import SloganGeneratorDescription from '../text/SloganGenerator/SloganGeneratorDescription';
 
 const { Configuration, OpenAIApi } = require('openai');
 
@@ -13,7 +12,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 
-export default function ProductNamerService() {
+export default function SloganGeneratorService() {
 
     const [state, setState] = useState("noInput");
 
@@ -30,24 +29,22 @@ export default function ProductNamerService() {
         getApiResponse(data);
     }
 
+    let prompt = "";
+    if (data.serviceName) {
+        prompt = `Give me a creative slogan that for a service with the following characteristics:
+        \nService name: ${data.serviceName};\n
+        \nService description: ${data.serviceDescription};\n
+        \nEmotion that the slogan provokes: ${data.emotion}.`;
+    } else {
+        prompt = `Give me a creative slogan that for a service with the following characteristics:
+        \nService description: ${data.serviceDescription};\n
+        \nEmotion that the slogan provokes: ${data.emotion}.`;
+    }
+    
     const getApiResponse = (data) => {
         openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `Product description: 
-                    A home milkshake maker\n
-                    Key Characteristics: fast, healthy, compact. \n
-                    Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker\n
-                    \nProduct description: an apocalyptic coffee maker \n
-                    Key Characteristics: clean, dangerous, modern\n
-                    Product names: Last Chance Coffee, Hazardous Grounds, End of the Line Coffee\n
-                    \n Product description: a non-profit that helps people find homeless people in need\n
-                    Key Characteristics: kind, caring, humanitarian, charity\n
-                    Product names: Web of Care, Find A Friend, Helping Hands, Safe Haven \n
-                    \n Product description: a fashion website that finds stylists according to your fashion taste\n
-                    Key Characteristics: easy, modern, stylish, trendy, popular\n
-                    Product names: Fashion Finder, Style Seeker, Trend Tracker, Popularity Meter \n
-                    \nProduct description: ${data.productDescription}.\n
-                    Key Characteristics: ${data.seedWords}.`,
+            prompt: prompt,
             temperature: 1.0,
             max_tokens: 60,
             top_p: 1.0,
@@ -55,9 +52,9 @@ export default function ProductNamerService() {
             presence_penalty: 0.9,
           })
           .then((response) => {
-            let productNames = response.data.choices[0].text.split(":")[1].split(',');
+            let slogan = response.data.choices[0].text;
             setOpenApiResponse({
-                productNames: `${productNames}`
+                slogan: `${slogan}`
             });
           })
           .then(() => {
@@ -75,10 +72,10 @@ export default function ProductNamerService() {
                     textAlign: "center",
                     lineHeight: "2.5rem"
                 }}>
-                    Find a Product Name
+                    Find the perfect Slogan
             </Typography>         
-            <ProductNamerDescription />
-            <ProductNamerInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
+            <SloganGeneratorDescription />
+            <SloganGeneratorInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
             {state == "waiting-for-response" && (
                 <Stack 
                     alignItems="center"
@@ -86,17 +83,17 @@ export default function ProductNamerService() {
                     <CircularProgress size="6rem" />
                 </Stack>
             )}
-            {state == "responseReceived" && (
+            {state == "response-received" && (
                 <Grid item>
                     <Typography sx={{
                         fontSize: "2rem"
                     }}>
-                        We found the following names for your product:
+                        We found the following slogan for your service:
                     </Typography>
                     <Typography sx={{
                         fontSize: "3rem"
                     }}>
-                        {openApiResponse.productNames}
+                        {openApiResponse.slogan}
                     </Typography>
                 </Grid>
             )}
@@ -107,7 +104,6 @@ export default function ProductNamerService() {
                     </Typography>
                 </Grid>
             )}
-            <ProductNamerHowTo />
         </Grid>
     )
 }

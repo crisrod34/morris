@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Box, Grid, Stack, Typography, CircularProgress } from "@mui/material";
 
 import ImageGeneratorInput from './../input/ImageGeneratorInput';
-import ImageGeneratorDescription from '../text/ImageGeneratorDescription';
+import ImageGeneratorDescription from '../text/ImageGenerator/ImageGeneratorDescription';
+import ImageGeneratorHowTo from '../text/ImageGenerator/ImageGeneratorHowTo';
 
 const { Configuration, OpenAIApi } = require('openai');
 
@@ -53,11 +54,11 @@ export default function ImageGeneratorService() {
     return (
         <Grid item>
             <Typography sx={{
-                    textDecoration: "underline",
-                    fontSize: "4rem",
-                    textAlign: "center"
+                    fontSize: "2.5rem",
+                    textAlign: "center",
+                    lineHeight: "2.5rem",
                 }}>
-                    Image Generator
+                    AI Image Generator
             </Typography>
             <ImageGeneratorDescription />            
             <ImageGeneratorInput childToParent={childToParent} submitApiRequest={submitApiRequest}/>
@@ -70,9 +71,6 @@ export default function ImageGeneratorService() {
             )}
             {state == "response-received" && (
                 <Grid item >
-                    {/* <Link href={openApiResponse.imageUrl} underline='hover' target='blank'>
-                        Your Beautiful Image
-                    </Link> */}
                     <Stack
                         sx={{ pt:2 }}
                         direction="column"
@@ -81,8 +79,8 @@ export default function ImageGeneratorService() {
                     <Box
                         component="img"
                         sx={{
-                            height: "20rem",
-                            width: "20rem",
+                            height: "50%",
+                            width: "50%",
                             borderRadius: 5,
                         }}
                         src={"data:image/png;base64," + openApiResponse.imageBase64}
@@ -98,6 +96,7 @@ export default function ImageGeneratorService() {
                 </Typography>
             </Grid>
             )}
+            <ImageGeneratorHowTo />
         </Grid>
     )
 }

@@ -47,6 +47,7 @@ export default function ImageGeneratorService() {
             setState("response-received");
           })
           .catch((error) => {
+            console.log(configuration);
             setState("error-in-request")
         });
     }

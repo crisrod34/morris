@@ -2,12 +2,12 @@ import { TextField, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState, useEffect } from "react";
 
-export default function ImageGeneratorInput({childToParent, submitApiRequest}) {
+export default function RecommendationGeneratorInput({childToParent, submitApiRequest}) {
 
     const [details, setDetails] = useState({
-        imageSubject: '',
-        imageContext: '',
-        imageStyle: '',
+        subject: '',
+        reasons: '',
+        recipient: '',
     });
 
     const handleChange = (e) => {
@@ -44,32 +44,31 @@ export default function ImageGeneratorInput({childToParent, submitApiRequest}) {
                     required
                     id="outline-required"
                     label="Subject"
-                    placeholder="E.g. A Chimpanzee, Bigfoot, A group of friends"
+                    placeholder="Who or What are you recommending?"
                     fullWidth
                     margin="normal"
-                    name="imageSubject"
+                    name="subject"
                     onKeyDown={handleEnter}
                     onChange={handleChange}
                 />
                 <TextField
                     required
                     id="outline-required"
-                    label="Situation or Context"
-                    placeholder="E.g. Playing football underwater, Eating watermelon, Crying"
+                    label="Reasons"
+                    placeholder="What do you recommending about it?"
                     fullWidth
                     margin="normal"
-                    name="imageContext"
+                    name="reasons"
                     onKeyDown={handleEnter}
                     onChange={handleChange}
                 />
                 <TextField
-                    required
                     id="outline-required"
-                    label="Style"
-                    placeholder="Pixel Art, 3D Render, Photorealist, As A Dali Painting"
+                    label="Recipient"
+                    placeholder="Who will be reading this recommendation?"
                     fullWidth
                     margin="normal"
-                    name="imageStyle"
+                    name="recipient"
                     onKeyDown={handleEnter}
                     onChange={handleChange}
                 />
@@ -79,9 +78,9 @@ export default function ImageGeneratorInput({childToParent, submitApiRequest}) {
                 onClick={() => {
                     handleSubmit();
                 }}
-                >
-                Generate Image</Button>
-
+            >
+                Generate Recommendation</Button>
+                
             </div>
         </Box>
         

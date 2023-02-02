@@ -25,7 +25,7 @@ export default function ProductNamerCard(props) {
               Name Your Product
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              If you're looking for a creative name for your new product, look no further than our naming service. We'll help you come up with a name that's both unique and catchy, so your product will stand out from the rest.
+              Find a creative name for your new product.
             </Typography>
           </CardContent>
         </CardActionArea>

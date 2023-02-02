@@ -6,25 +6,25 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import underwater from '../../media/underwater.png';
+import slogan from '../../media/slogan.jpg';
 
-export default function ImageGeneratorCard(props) {
+export default function RecommendationGeneratorCard(props) {
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-        <CardActionArea onClick={props.enterImagePrompt}>
+        <CardActionArea onClick={props.enterRecommendation}>
           <CardMedia
             component="img"
             height="140"
-            image={underwater}
-            alt="an underwater astronaut watching a football game"
+            image={slogan}
+            alt="a myriad of product names"
           />
           <CardContent sx={{ flexGrow: 1 }}>
-            <Typography gutterBottom variant="h5" component="h2" >
-              A.I. Image Generator
+            <Typography gutterBottom variant="h5" component="div">
+              Recommendation Generator
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Create stunning images of anything you can imagine.
+              Generate a thoughtful recommendation for anything.
             </Typography>
           </CardContent>
         </CardActionArea>

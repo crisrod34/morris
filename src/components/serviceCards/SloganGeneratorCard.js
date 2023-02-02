@@ -24,7 +24,7 @@ export default function SloganGeneratorCard(props) {
               Slogan Generator
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Generate a creative slogan for you service that will provoke emotion and intrigue into whomever reads it. We'll help you stand out from the competition with a slogan that is sure to catch everyone's attention.
+              Generate a creative slogan for you service.
             </Typography>
           </CardContent>
         </CardActionArea>

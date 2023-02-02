@@ -33,6 +33,9 @@ import SloganGeneratorService from './components/services/SloganGeneratorService
 import BookReviewGeneratorCard from './components/serviceCards/BookReviewGeneratorCard';
 import BookReviewGeneratorService from './components/services/BookReviewGeneratorService';
 
+import RecommendationGeneratorCard from './components/serviceCards/RecommendationGeneratorCard';
+import RecommendationGeneratorService from './components/services/RecommendationGeneratorService';
+
 const theme = createTheme();
 
 export default function App() {
@@ -95,14 +98,14 @@ export default function App() {
                   color="text.primary"
                   lineHeight={1}
                 >
-                  Use A.I. to easily create content
+                  Create Content with Artificial Intelligence
                 </Typography>
                 <Typography 
                   variant="h5"
                   align="center"
                   color="text.secondary"
                   paragraph>
-                  A.I. Content Generator is a free online platform that enables users to create content by 
+                  This free A.I. Content Generator enables users to create content by 
                   submitting ideas so that GPT-3 can turn them into dynamic content.
                 </Typography>
                 <Button 
@@ -135,9 +138,9 @@ export default function App() {
                     setState('product-namer');
                     bringBackUp.current?.scrollIntoView({ behavior: 'smooth' });
                   }} />
-                <SimpleSummarizationCard 
-                  enterLongText={() => 
-                    {setState('simple-summarization');
+                <RecommendationGeneratorCard 
+                  enterRecommendation={() => 
+                    {setState('enter-recommendation');
                     bringBackUp.current?.scrollIntoView({ behavior: 'smooth' });
                   }} />
               </Stack>
@@ -147,6 +150,11 @@ export default function App() {
                   spacing={2}
                   justifyContent="center"
                 >
+                <SimpleSummarizationCard 
+                  enterLongText={() => 
+                    {setState('simple-summarization');
+                    bringBackUp.current?.scrollIntoView({ behavior: 'smooth' });
+                  }} />
                 <SloganGeneratorCard 
                   enterSlogan={() => 
                     {setState('enter-slogan-description');
@@ -304,6 +312,37 @@ export default function App() {
                   spacing={2}
                   justifyContent="center">
                 <BookReviewGeneratorService />
+                <Button 
+                      variant="contained"
+                      justifyContent="flex-end"
+                      onClick={() => {
+                        setState('start');
+                      }}
+                      >
+                      Back</Button>
+                </Stack>
+              </Grid>
+            </Container>
+          </Box>
+        </main>
+      }
+
+      {state == 'enter-recommendation' &&
+        <main>
+          <Box
+            sx={{
+              bgcolor: 'background.paper',
+              pt: 12,
+              pb: 6,
+            }}
+          >
+            <Container maxWidth="md" sx={{ pb:4 }}>
+              <Grid container spacing={2}>
+                <Stack 
+                  direction="column"
+                  spacing={2}
+                  justifyContent="center">
+                <RecommendationGeneratorService />
                 <Button 
                       variant="contained"
                       justifyContent="flex-end"

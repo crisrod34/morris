@@ -32,7 +32,7 @@ export default function ImageGeneratorService() {
 
     const getApiResponse = (data) => {
         openai.createImage({
-            prompt: `${data.imagePrompt}`,
+            prompt: `subject: ${data.imageSubject}; context: ${data.imageContext}; style: ${data.imageStyle}`,
             n: 1,
             size: "512x512",
             response_format: "b64_json",
@@ -47,8 +47,8 @@ export default function ImageGeneratorService() {
             setState("response-received");
           })
           .catch((error) => {
-            console.log(configuration);
             setState("error-in-request")
+            console.log(`subject: ${data.imageSubject}; context: ${data.imageContext}; style: ${data.imageStyle}`);
         });
     }
 

@@ -24,8 +24,7 @@ export default function BookReviewGeneratorCard(props) {
               Book Review Generator
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              This is a service that can generate a book review for almost any book written before 2021. 
-              All you need to do is input the title of the book and let GPT-3 do the rest!
+              Generate a book review for almost any book written before 2021. 
             </Typography>
           </CardContent>
         </CardActionArea>

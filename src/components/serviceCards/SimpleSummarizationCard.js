@@ -24,8 +24,7 @@ export default function SimpleSummarizationCard(props) {
               Simple Summarization
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              This is a summarization service that takes long form text and summarizes it into short, easy to understand Bits. Made 
-              for busy people who don't have time to read long articles or books, but need to understand the main points.
+              Take long form text and summarizes it into short, easy to understand bits.
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -61,8 +61,14 @@ export default function App() {
           >
             <HomeIcon />
           </IconButton>
-          <Typography color="inherit" nowrap="true"
-            sx={{ fontSize: "20px"}}>
+          <Typography 
+            color="inherit"
+            nowrap="true"
+            sx={{ fontSize: "20px"}}
+            onClick={() => {
+              setState('start');
+            }}
+            >
             AI Content Generator
           </Typography>
           <IconButton
@@ -105,8 +111,8 @@ export default function App() {
                   align="center"
                   color="text.secondary"
                   paragraph>
-                  This free A.I. Content Generator enables users to create content by 
-                  submitting ideas so that GPT-3 can turn them into dynamic content.
+                  This free A.I. Content Generator enables you to create content by 
+                  entering creative prompts that GPT-3 transforms into dynamic content.
                 </Typography>
                 <Button 
                   variant="contained" 

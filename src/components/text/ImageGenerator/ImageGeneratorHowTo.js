@@ -22,21 +22,6 @@ export default function ImageGeneratorHowTo() {
                 fontWeight: 700,
                 fontSize: '1.4rem',
             }}>
-                How to write a good prompt:
-            </Typography>
-            <Typography sx={{
-                fontSize: '1.3rem',
-            }}>
-                <ol>
-                    <li>A main subject of the image (an astronaut; a blue octopus; a green alien)</li>
-                    <li>Context for the subject (discovering a new planet; playing with a green rhinocerous; teaching sign language)</li>
-                    <li>The art style for the image (as a salvador dali painting, a 3d render, digital art)</li>
-                </ol>
-            </Typography>
-            <Typography sx={{
-                fontWeight: 700,
-                fontSize: '1.4rem',
-            }}>
                 Examples:
             </Typography>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 12, md: 12 }} justifyContent="center">
@@ -110,6 +95,22 @@ export default function ImageGeneratorHowTo() {
                     </Item>
                 </Grid>
             </Grid>
+            <Typography sx={{
+                fontWeight: 700,
+                fontSize: '1.4rem',
+                pt: 3
+            }}>
+                How to write a good prompt:
+            </Typography>
+            <Typography sx={{
+                fontSize: '1.3rem',
+            }}>
+                <ol>
+                    <li>A main subject of the image (an astronaut; a blue octopus; a green alien)</li>
+                    <li>Context for the subject (discovering a new planet; playing with a green rhinocerous; teaching sign language)</li>
+                    <li>The art style for the image (as a salvador dali painting, a 3d render, digital art)</li>
+                </ol>
+            </Typography>
         </Box>
     )
 }

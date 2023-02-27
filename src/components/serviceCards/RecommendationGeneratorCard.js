@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import slogan from '../../media/slogan.jpg';
+import congrats from '../../media/congrats.png';
 
 export default function RecommendationGeneratorCard(props) {
   return (
@@ -16,8 +16,8 @@ export default function RecommendationGeneratorCard(props) {
           <CardMedia
             component="img"
             height="140"
-            image={slogan}
-            alt="a myriad of product names"
+            image={congrats}
+            alt="a person being congratulated"
           />
           <CardContent sx={{ flexGrow: 1 }}>
             <Typography gutterBottom variant="h5" component="div">

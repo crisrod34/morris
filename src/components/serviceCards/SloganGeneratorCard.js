@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import slogan from '../../media/slogan.jpg';
+import slogan from '../../media/slogan1.jpg';
 
 export default function SloganGeneratorCard(props) {
   return (
